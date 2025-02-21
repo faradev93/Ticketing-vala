@@ -1,4 +1,4 @@
-const Sign_up = (e) => {
+const SignupPage = (e) => {
   return (
     <div>
       <div className="w-[600px] h-[600px] bg-white/80 border-2 border-gray-700 p-2 flex flex-col justify-center items-center m-1">
@@ -44,17 +44,17 @@ const Sign_up = (e) => {
             Register!
           </button>
           <p>
-          Or Click here to
-          <a href="#">
-            <span className="font-bold hover:text-sky-100 transition transition-250ms">
-              {" "}
-              Login!
-            </span>
-          </a>
-        </p>
+            Or Click here to
+            <a href="#">
+              <span className="font-bold hover:text-sky-100 transition transition-250ms">
+                {" "}
+                Login!
+              </span>
+            </a>
+          </p>
         </div>
       </div>
     </div>
   );
 };
-export default Sign_up;
+export default SignupPage;
