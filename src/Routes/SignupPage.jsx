@@ -1,4 +1,7 @@
 const SignupPage = (e) => {
+  const handleClick = (e) => {
+    console.log("hey Koskesh");
+  };
   return (
     <div>
       <div className="w-[600px] h-[600px] bg-white/80 border-2 border-gray-700 p-2 flex flex-col justify-center items-center m-1">
@@ -40,7 +43,10 @@ const SignupPage = (e) => {
               id="mail"
             />
           </div>
-          <button className="border-2 border-black p-2 w-[100px] hover:bg-amber-500 hover:transition">
+          <button
+            onClick={handleClick}
+            className="border-2 border-black p-2 w-[100px] hover:bg-amber-500 hover:transition"
+          >
             Register!
           </button>
           <p>

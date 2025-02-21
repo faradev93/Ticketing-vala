@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 import TicketsPage from "./Routes/TicketsPage";
 import LoginPage from "./Routes/LoginPage";
@@ -10,6 +10,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          index
+          element={
+            <div>
+              <Link to="/login">ToLogin</Link>
+            </div>
+          }
+        ></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<SignupPage />}></Route>
         <Route path="/tickets" element={<TicketsPage />}></Route>
