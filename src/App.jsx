@@ -1,3 +1,4 @@
+
 export default function App() {
-  return <div>Start</div>;
+  return <div className="bg-amber-500">Start</div>;
 }
