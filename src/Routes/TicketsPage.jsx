@@ -1,7 +1,30 @@
-import Header from "../components/Header";
+import { useEffect, useState } from "react";
+import FlexDisplay from "../components/FlexDisplay";
+import TicketCard from "./TicketCard";
 
-export default function TicketsPage() {
-  <div className="bg-amber-500/50 p-4 border-b-2 border-black/80 rounded-b-[50px] flex justify-center ">
-    <Header/>
-  </div>;
-}
+const TicketsPage = () => {
+  const getData = async () => {
+    try {
+      const Response = await fetch("http://test.joo.nz/tickets");
+      const Convert = await Response.json();
+      setUsers(Convert);
+    } catch (eshag) {
+      console.log(`Riiiiiid  +${eshag} SopaMAL`);
+    }
+  };
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    getData(), [];
+  });
+  // console.log(users);
+  return (
+    <div>
+      <FlexDisplay>
+        {users.map((ticket, index) => {
+          return <TicketCard ticket={ticket} key={index} />;
+        })}
+      </FlexDisplay>
+    </div>
+  );
+};
+export default TicketsPage;
