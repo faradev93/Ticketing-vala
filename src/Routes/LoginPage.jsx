@@ -1,39 +1,46 @@
-import "./style.css";
+import { useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 
 const LoginPage = (tst) => {
-  const [password, setPassword] = useState("");
   const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   //
+
   const login = async function () {
     const response = await fetch("http://test.joo.nz/login", {
+      headers: {
+        "content-type": "application/json",
+      },
       method: "post",
-      data: JSON.stringify({username:"faramarz",password:"12345"}),
+      body: JSON.stringify({ username: mail, password: password }),
     });
-    const data = await response.json();
-    console.log(data);
-    const token = data.token;
-    localStorage.setItem("token", token);
+    if (response.status === 200) {
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem("token", data.token);
+      navigate("/tickets");
+    }else if(!response.ok){console.log("rid");}
   };
+  const test = { username: "faramarz123" };
+  let testSTR = JSON.stringify(test);
+  // console.log(test, testSTR, JSON.parse(testSTR));
 
   //
-  login();
 
   //
   return (
     <div className="m-1 bg-white/80 w-[600px] h-[600px] flex justify-center items-center border-2 border-gray-700">
       <div className="flex flex-col justify-center items-center gap-8 p-4 h-fit w-[350px] bg-gray-400 border-2 border-black/80 rounded-3xl">
-        <h1 className="text-white text-4xl font-extrabold">
-          Login
-          <span class="feri">سلام متن تست</span>
-        </h1>
+        <h1 className="text-white text-4xl font-extrabold">Login</h1>
         {/* log details */}
         <div className="flex flex-col gap-2 select-none">
           <label className="bg-inherit" htmlFor="mail">
             UserName:
           </label>
           <input
-            onChange={setMail}
+            onChange={(e) => setMail(e.target.value)}
             className="border-2 border-amber-50 font-mono pl-1 p-2 "
             type="text"
             id="mail"
@@ -44,7 +51,7 @@ const LoginPage = (tst) => {
           </label>
 
           <input
-            onChange={setPassword}
+            onChange={(e) => setPassword(e.target.value)}
             className="border-2 border-amber-50 font-mono pl-1 p-2 "
             id="password"
             type="password"
@@ -58,7 +65,7 @@ const LoginPage = (tst) => {
         </button>
         <p>
           Or Click here to
-          <a href="#">
+          <a href="/register">
             <span className="font-bold hover:text-sky-400 transition transition-250ms">
               {" "}
               Register

@@ -7,6 +7,9 @@ import FeriPage from "./Routes/FeriPage";
 import TicketsPage from "./Routes/TicketsPage";
 import { useState } from "react";
 import TicketinfoPage from "./Routes/TicketCard";
+import LoginPage2 from "./Routes/LoginPage2";
+import LoginPage3 from "./Routes/LoginPage3";
+import Logintest from "./Routes/Logintest";
 
 export default function App() {
   //
@@ -31,6 +34,9 @@ export default function App() {
         {/*  */}
         <Route path="/tickets/:id" element={<TicketDetailPage />}></Route>
         <Route path="/tickets/reserved" element={<ReservedPage />}></Route>
+        <Route path="/faramarz" element={<LoginPage2/>}></Route>
+        <Route path="/majod" element={<LoginPage3/>}></Route>
+        <Route path="login_test" element={<Logintest/>}></Route>
       </Routes>
     </BrowserRouter>
   );
