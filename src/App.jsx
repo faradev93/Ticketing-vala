@@ -10,6 +10,8 @@ import TicketinfoPage from "./Routes/TicketCard";
 import LoginPage2 from "./Routes/LoginPage2";
 import LoginPage3 from "./Routes/LoginPage3";
 import Logintest from "./Routes/Logintest";
+import TestPage from "./Routes/TestPage";
+import SignupPage2 from "./Routes/SignupPage2";
 
 export default function App() {
   //
@@ -34,9 +36,11 @@ export default function App() {
         {/*  */}
         <Route path="/tickets/:id" element={<TicketDetailPage />}></Route>
         <Route path="/tickets/reserved" element={<ReservedPage />}></Route>
-        <Route path="/faramarz" element={<LoginPage2/>}></Route>
-        <Route path="/majod" element={<LoginPage3/>}></Route>
-        <Route path="login_test" element={<Logintest/>}></Route>
+        <Route path="/faramarz" element={<LoginPage2 />}></Route>
+        <Route path="/majod" element={<LoginPage3 />}></Route>
+        <Route path="login_test" element={<Logintest />}></Route>
+        <Route path="/testpage" element={<TestPage />}></Route>
+        <Route path="/reg" element={<SignupPage2 />}></Route>
       </Routes>
     </BrowserRouter>
   );

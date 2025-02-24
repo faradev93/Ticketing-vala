@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+//
+
 const SignupPage = () => {
   //
   const navigate = useNavigate();
@@ -14,14 +16,14 @@ const SignupPage = () => {
 
   //
   const signUp = async () => {
-    if (pass === confirmPass) {
+    if (form.password === form.confirmPass) {
       const response = await fetch("http://test.joo.nz/register", {
         method: "post",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           username: form.mail,
-          fullname: name,
-          password: pass,
+          fullname: form.username,
+          password: form.password,
         }),
       });
       if (response.status === 200) {
@@ -35,22 +37,30 @@ const SignupPage = () => {
   };
   // replace|
 
-  const handleMail = (e) => {
-    const value = e.target.value;
-    const copyForm = { ...form };
-    copyForm.mail = value;
-    setForm(copyForm);
-  };
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPass(e.target.value);
-  };
-  const handleConfirmPassword = (ex) => {
-    setConfirmPass(ex.target.value);
-  };
+  // const handlePassword = (e) => {
+  //   const value = e.target.value;
+  //   const copyForm = { ...form };
+  //   copyForm.password = value;
+  //   setForm(copyForm);
+  // };
+  // const handleConfirmPassword = (ex) => {
+  //   const value2 = ex.target.value;
+  //   const copyform = { ...form };
+  //   copyform.confirmPassword = value2;
+  //   setForm(copyform);
+  //   console.log(copyform);
+  // };
+
+  console.log(form);
   //
+
+  function Updater(input) {
+    function setUpdater(newInput) {
+      // return newInput;
+    }
+    return [input, setUpdater];
+  }
+  Updater("faramarz");
   return (
     <div>
       <div className="w-[600px] h-[600px] bg-white/80 border-2 border-gray-700 p-2 flex flex-col justify-center items-center m-1">
@@ -61,7 +71,7 @@ const SignupPage = () => {
             <label className="bg-inherit" htmlFor="mail"></label>
             Email:
             <input
-              onChange={handleMail}
+              onChange={(e) => setForm({ ...form, mail: e.target.value })}
               className="border-2 border-amber-50 font-mono pl-1 p-2 select-none "
               type="text"
               id="mail"
@@ -71,7 +81,9 @@ const SignupPage = () => {
             <label className="bg-inherit" htmlFor="name"></label>
             Full Name:
             <input
-              onChange={handleName}
+              onChange={(e) => {
+                setForm({ ...form, username: e.target.value });
+              }}
               className="border-2 border-amber-50 font-mono pl-1 p-2 select-none "
               type="text"
               id="name"
@@ -81,7 +93,9 @@ const SignupPage = () => {
             <label className="bg-inherit" htmlFor="passowrd"></label>
             Password:
             <input
-              onChange={handlePassword}
+              onChange={(ps) => {
+                setForm({ ...form, password: ps.target.value });
+              }}
               className="border-2 border-amber-50 font-mono pl-1 p-2 select-none "
               type="password"
               id="passowrd"
@@ -90,7 +104,9 @@ const SignupPage = () => {
             <label className="bg-inherit" htmlFor="passwordConfirm"></label>
             Password Confirm:
             <input
-              onChange={handleConfirmPassword}
+              onChange={(oo) => {
+                setForm({ ...form, confirmPassword: oo.target.value });
+              }}
               className="border-2 border-amber-50 font-mono pl-1 p-2 select-none "
               type="password"
               id="passwordConfirm"
