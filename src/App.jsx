@@ -12,6 +12,8 @@ import LoginPage3 from "./Routes/LoginPage3";
 import Logintest from "./Routes/Logintest";
 import TestPage from "./Routes/TestPage";
 import SignupPage2 from "./Routes/SignupPage2";
+import Signup3 from "./Routes/Signup3";
+import Reg3 from "./Routes/REG3";
 
 export default function App() {
   //
@@ -41,6 +43,8 @@ export default function App() {
         <Route path="login_test" element={<Logintest />}></Route>
         <Route path="/testpage" element={<TestPage />}></Route>
         <Route path="/reg" element={<SignupPage2 />}></Route>
+        <Route path="panahi" element={<Signup3/>}></Route>
+        <Route path="reg3" element={<Reg3/>}></Route>
       </Routes>
     </BrowserRouter>
   );

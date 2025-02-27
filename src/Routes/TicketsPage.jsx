@@ -14,8 +14,8 @@ const TicketsPage = () => {
   };
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    getData(), [];
-  });
+    getData();
+  }, []);
   // console.log(users);
   return (
     <div>
